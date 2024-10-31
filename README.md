@@ -2,8 +2,11 @@
 
 pip install flowplot
 
+Usage demonstrated in the Notebook **Cycle**:
+![image](https://github.com/user-attachments/assets/cbc97834-0241-48b2-a56e-813f1bc8225a)
+
 _user-inputs_ folder includes user-input examples of: 
-- flow time series
+- flow time series 
 - cycles 
 
 Creates the following three diagrams for a user-determined cycle:
