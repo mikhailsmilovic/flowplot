@@ -45,7 +45,7 @@ def load_csv_output(simulation_file):
     return Sim_df
 
 
-def cycle(filename):
+def cycle(filename, cellsize_m2=1000*1000, num_cells_domain=153451,margins=True):
 
     figure_title = filename.split('/')[-1]
     figure_title = figure_title.split('\\')[-1] 
@@ -67,10 +67,6 @@ def cycle(filename):
 
     colors = ['balance', 'in', 'out', 'storage change', 'balance']
 
-
-    # Either read in or as user-inputs
-    num_cells_domain = 153451
-    cellsize_m2 = 1000*1000
 
     fig_lines_all_flows = go.Figure()
 
@@ -202,8 +198,31 @@ def cycle(filename):
                             y=0.04,
                             x=0.5,
                             #font=dict(size=10)
-                            ),
-                        margin=dict(l=20, r=20, t=20, b=45))
+                            ))
+    if margins==True:
+        fig_circle.update_layout(margin=dict(l=20, r=20, t=20, b=45))
+    
+
+    marker_colors = [colors_dict[i] for i in colors]
+    marker_line_color = ['black']*len(marker_colors)
+    marker_line_color[0]='white'
+    marker_line_color[4]='white'
+    #marker_colors[2]='#AB63FA'
+    fig_bar = go.Figure(data=[go.Bar(x=labels, 
+                                     y=values, 
+                                     marker_color=marker_colors,
+                                     marker_line_color=marker_line_color,
+                                     #marker_line_width=3
+                                     )],
+                                     layout=dict(barcornerradius="10%"))
+    
+    fig_bar.update_layout(
+        template = 'plotly_dark',
+        plot_bgcolor='rgb(0,0,0)', 
+        paper_bgcolor ='rgb(0,0,0)',
+        title = figure_title,
+        yaxis_title="m<sup>3</sup> (total/period)",
+        font=dict(size=10))
 
     fig_lines_type_flows.update_layout(template = 'plotly_dark')
     fig_lines_type_flows.update_layout(plot_bgcolor='rgb(0,0,0)', 
@@ -237,6 +256,7 @@ def cycle(filename):
     fig_lines_all_flows.update_xaxes(automargin='height')
 
     fig_circle.show()
+    fig_bar.show()
     fig_lines_type_flows.show()
     fig_lines_all_flows.show()
 

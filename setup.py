@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.4' 
+VERSION = '0.0.7' 
 DESCRIPTION = 'Flow-related diagrammes'
 LONG_DESCRIPTION = 'Flow-related diagrammes, cycles, and assessment tools'
 
