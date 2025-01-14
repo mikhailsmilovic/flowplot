@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.7' 
+VERSION = '0.0.12' 
 DESCRIPTION = 'Flow-related diagrammes'
 LONG_DESCRIPTION = 'Flow-related diagrammes, cycles, and assessment tools'
 
@@ -17,7 +17,7 @@ setup(
         install_requires=[], # add any additional packages that 
         # needs to be installed along with your package. Eg: 'caer'
 
-        keywords=['python', 'hydrological modeling'],
+        keywords=['python', 'hydrological modelling'],
         classifiers= [
             "Development Status :: 3 - Alpha",
             "Intended Audience :: Education",

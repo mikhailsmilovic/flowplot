@@ -2,26 +2,21 @@ import os, math, sys, re
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 import plotly.express as px
 
-def load_csv_output(simulation_file):
-    Sim_df = pd.read_csv(
-        #os.path.join('user-inputs',
-        #             'simulation-outputs',
-                     simulation_file,
-        #             ),
-                     delimiter=';')
+def load_csv_output(simulation_file, delimiter=';'):
+    Sim_df = pd.read_csv(simulation_file, delimiter=delimiter)
 
     # removing leading and trailing whitespace in column names
     keys_clean = [key.strip() for key in Sim_df.keys()]
     
-    # edit repeat variables to be have _# at end
+    # edit repeat variables with a .# ending 
+    # within a csv holding measurements to be have _# on the end
     # will work up to 10 layers
     for i in range(len(keys_clean)):
         if keys_clean[i][-2]=='.':
-
             raw_variable_name = keys_clean[i][:-2].strip()
+
             if keys_clean[i][-1]=='1':
                 # search for the previous one and append _1
                 index_first_variable_instance = keys_clean.index(raw_variable_name)
@@ -45,49 +40,49 @@ def load_csv_output(simulation_file):
     return Sim_df
 
 
-def cycle(filename, cellsize_m2=1000*1000, num_cells_domain=153451,margins=True):
+def cycle(filename, 
+          cellsize_m2=1000*1000, num_cells_domain=153451, 
+          return_figures=False, onlyCircle=False, onlyTypeFlows=False, margins=True,
+          delimiter=';'):
 
     figure_title = filename.split('/')[-1]
     figure_title = figure_title.split('\\')[-1] 
     figure_title = figure_title.split('.')[0]                               
 
     SIM_df = pd.DataFrame()
-    Circles_df = pd.read_csv(
-        #os.path.join('user-inputs',
-        #             'cycles',
-                     filename,
-        #             ), 
-                     delimiter=';')
+    Circles_df = pd.read_csv(filename, delimiter=delimiter)
 
     labels = ['total', 'in', 'out', 'storage change', 'balance']
     parents = ['', 'total', 'total', 'total', 'total']
     values = [0, 0, 0, 0, 0]
     colors_dict = {'in':'#636EFA', 'out':'#EF5538', 'balance':'black', 'storage change':'#D2D2D3'}
-    #rs_dict = {'positive':'Safe[0]', 'negative':'Safe[1]', 'empty':'black', 'storage':'Safe[2]'}
-
     colors = ['balance', 'in', 'out', 'storage change', 'balance']
-
 
     fig_lines_all_flows = go.Figure()
 
+    # Progressing through the list of variables
     for flow_n in range(len(Circles_df['VARIABLES'])):
 
         simulation_file = Circles_df['SIMULATION'][flow_n]
-        try: not math.isnan(simulation_file)
-        except: 
-            Sim_df = load_csv_output(simulation_file)
-            
-            if SIM_df.empty:
-                SIM_df = Sim_df.copy()
-
         flow_name = Circles_df['VARIABLES'][flow_n]
         parent_name = Circles_df['TYPE'][flow_n]
+
+        try: not math.isnan(simulation_file)
+        except: 
+            Sim_df = load_csv_output(simulation_file, delimiter=delimiter)
+            
+            # create the master as a copy of the first dataframe
+            if SIM_df.empty:
+                SIM_df['in'] = Sim_df[flow_name]*0
+                SIM_df['out'] = Sim_df[flow_name]*0
+                SIM_df['storage change'] = Sim_df[flow_name]*0
+                SIM_df['balance'] = Sim_df[flow_name]*0
 
         # unify units to m3/m2/simulation
         unit = Circles_df['UNITS'][flow_n]
         multiplier = 1
 
-        #transform to units m/day/basinav
+        #transform to units m/day/basin
         if unit[-4:] == 'cell':
             multiplier *= num_cells_domain
 
@@ -96,9 +91,6 @@ def cycle(filename, cellsize_m2=1000*1000, num_cells_domain=153451,margins=True)
 
         if 'm3s' in unit:
             multiplier *= 60*60*24
-
-            #Only for testing
-            #multiplier /= 4
 
         elif 'mm' in unit:
             multiplier /= 1000 
@@ -116,11 +108,17 @@ def cycle(filename, cellsize_m2=1000*1000, num_cells_domain=153451,margins=True)
             flow_name = new_storage_change_key
             parent_name = 'storage change'
 
-        
+        flow_name_original = flow_name
+        name_counter = 2
+        if flow_name in SIM_df.keys():
+            while flow_name in SIM_df.keys():
+                flow_name = flow_name_original + '_' + str(name_counter)
+                name_counter +=1
+            Sim_df.rename(columns={flow_name_original:flow_name}, inplace=True)
+
         SIM_df[flow_name] = Sim_df[flow_name]
 
         # line graphs
-        
         fig_lines_all_flows.add_trace(go.Scatter(x=Sim_df['Date'], y=Sim_df[flow_name],
                             mode='lines',
                             name=flow_name))
@@ -173,10 +171,6 @@ def cycle(filename, cellsize_m2=1000*1000, num_cells_domain=153451,margins=True)
     values[4] += values[1] - values[2] # balance = inputs - outputs, beforehand:  minus actual storage change
     values[4] = abs(values[4])
     values[0] = values[1]+values[2]+values[3]+values[4] # total flows
-
-    #fig_circle=go.Figure(go.Sunburst(labels = labels, parents = parents, values = values, color=colors,
-    #                           branchvalues="total",
-    #                           textfont_color="White"))
 
     Sunburst = {'labels':labels, 'parents':parents, 'values':values, 'colors':colors}
     Sunburst_df = pd.DataFrame(data=Sunburst)
@@ -255,14 +249,15 @@ def cycle(filename, cellsize_m2=1000*1000, num_cells_domain=153451,margins=True)
     fig_lines_type_flows.update_xaxes(automargin='height')
     fig_lines_all_flows.update_xaxes(automargin='height')
 
-    fig_circle.show()
-    fig_bar.show()
-    fig_lines_type_flows.show()
-    fig_lines_all_flows.show()
-
-#try: 
-#    filename = sys.argv[1]
-#except:
-#    filename= 'Overall.csv'
-
-#cycle(filename)
+    if return_figures:
+        return fig_circle, fig_bar, fig_lines_type_flows, fig_lines_all_flows
+    elif onlyCircle:
+        fig_circle.show()
+    elif onlyTypeFlows:
+        fig_lines_type_flows.show()
+    else:
+        fig_circle.show()
+        fig_bar.show()
+        fig_lines_type_flows.show()
+        fig_lines_all_flows.show()
+    
