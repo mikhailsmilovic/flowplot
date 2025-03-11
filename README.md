@@ -8,10 +8,15 @@ from flowplot import cycle
 cycle(r".\user-inputs\cycles\Overall.csv", delimiter=';')
 ```
 _user-inputs_ folder includes user-input examples of: 
-- flow time series: this is the simplest when each line represents m3d or m3s, already scaled by cell area
-- cycles: associates the cycle flows as in, out, storage, and sub-flows
+### flow time series:
+- Contains three columns for the date: YYYY, MM,  DD
+- Column names match those indicated in the cycles csv below
+- Columns hold daily values of flows, simplest when the unit is m3 or m3s (meaning m3/day or m3/second)
 
-Creates the following three diagrams for a user-determined cycle:
+### cycles: 
+- associates the cycle flows as in, out, storage, and sub-flows
+
+### Creates the following diagrams for a user-determined cycle:
 1. **Water circles**, showing the partitioned inputs, outputs, net storage changes, and balance, aggregated spatiotemporal;
 2. **Line graphs, overall**, showing the inputs, outputs, net storage changes, and balance through time, aggregated spatially;
 3. **Line graphs, partitioned**, showing the partitioned flows through time, aggregated spatially.
