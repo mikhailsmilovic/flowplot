@@ -1,14 +1,35 @@
-# flowplot: circle, bar, and line flow diagrams
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/95150a22-f7bf-4b69-b387-e2f6c19e93af" width=50% height=50%>
+</p>
 
-pip install flowplot
+# Quickstart
+`pip install flowplot`
 
-Usage demonstrated in the Notebook **Cycle**:
-```
+```python
 from flowplot import cycle
 cycle(r".\user-inputs\cycles\Overall.csv", delimiter=';')
 ```
-![circle](https://github.com/user-attachments/assets/b8e8d3da-c002-4039-b5cd-cd8a98bf604c)
+<img src="https://github.com/user-attachments/assets/7fcdd855-611f-4cb7-82df-bc82baaf2865" width=50% height=50%>
 
+# Overview
+
+flowplot is a visulisation and analysis tool for hydrological and general flow-stock, input-output-storage data for Python 🐳
+
+Diagrams include 
+- **Cycle**, including
+  1. *Circles*, showing the partitioned inputs, outputs, net storage changes, and balance, aggregated spatiotemporally;
+  2. *Bar graphs*, showing the partitioned inputs, outputs, net storage changes, and balance, aggregated spatiotemporal;
+  3. *Line graphs, overall*, showing the inputs, outputs, net storage changes, and balance through time, aggregated spatially;
+  4. *Line graphs, partitioned*, showing the partitioned flows through time, aggregated spatially.
+- **TSCompare** Time series of multiple simulations and observations, with statistics
+- **ExceedanceProb** Exceedance probability and comparison, multiple simulations
+- **BoxWhisker** Box-whisker plots, multiple simulations
+- **HeatSeason** Seasonality, multiple simulations
+
+
+![flowplot_portfolio](https://github.com/user-attachments/assets/2170632f-acbf-4d21-8303-73dd0d372fed)
+
+# User inputs
 ### user-inputs folder includes: 
 #### cycles: 
 - associates the cycle flows as in, out, storage, and sub-flows
