@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/95150a22-f7bf-4b69-b387-e2f6c19e93af" width=50% height=50%>
+  <img src="https://github.com/user-attachments/assets/95150a22-f7bf-4b69-b387-e2f6c19e93af" width=70% height=70%>
 </p>
 
 # Quickstart
@@ -9,18 +9,16 @@
 from flowplot import cycle
 cycle(r".\user-inputs\cycles\Overall.csv", delimiter=';')
 ```
+<p align="center">
 <img src="https://github.com/user-attachments/assets/7fcdd855-611f-4cb7-82df-bc82baaf2865" width=50% height=50%>
+</p>
 
 # Overview
 
-flowplot is a visulisation and analysis tool for hydrological and general flow-stock, input-output-storage data for Python 🐳
+flowplot is a visualisation and analysis tool for hydrological and general flow-stock, input-output-storage data for Python 🐳
 
 Diagrams include 
-- **Cycle**, including
-  1. *Circles*, showing the partitioned inputs, outputs, net storage changes, and balance, aggregated spatiotemporally;
-  2. *Bar graphs*, showing the partitioned inputs, outputs, net storage changes, and balance, aggregated spatiotemporal;
-  3. *Line graphs, overall*, showing the inputs, outputs, net storage changes, and balance through time, aggregated spatially;
-  4. *Line graphs, partitioned*, showing the partitioned flows through time, aggregated spatially.
+- **Cycle**, including *Circles*, *Bar graphs*, and *Line graphs*
 - **TSCompare** Time series of multiple simulations and observations, with statistics
 - **ExceedanceProb** Exceedance probability and comparison, multiple simulations
 - **BoxWhisker** Box-whisker plots, multiple simulations
