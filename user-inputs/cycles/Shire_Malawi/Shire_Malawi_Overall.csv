@@ -1,0 +1,15 @@
+SIMULATION;VARIABLES;UNITS;TYPE;Unnamed: 4;USER GUIDE
+.\user-inputs\simulation-outputs\Shire_Malawi_1981_2019\subcatchments\avg_1.ts;Prec;mmdcell;in;;
+;ETaTOT;m3dcell;out;;SIMULATION = the name of the file with the outputs in CSV format
+;VolInterC;m3cell;storage;;VARIABLES = names of variables that are column names in the SIMULATON file
+;VolChan;m3cell;storage;;UNITS = m3s , m3
+;VolSurf;m3cell;storage;;TYPE = one of: in, out, storage, or the Variable name in VARIABLES that it belongs to
+;VolSoil_1;m3cell;storage;;
+;VolSoil_2;m3cell;storage;;
+;VolGw;m3cell;storage;;
+;ResVol;m3;storage;;
+.\user-inputs\simulation-outputs\Shire_Malawi_1981_2019\cells\150833.ts;QChan;m3s;out;;
+;QSurfSurf;m3s;out;;
+;QSoilSoil_1;m3s;out;;
+;QSoilSoil_2;m3s;out;;
+;QGwGw;m3s;out;;
