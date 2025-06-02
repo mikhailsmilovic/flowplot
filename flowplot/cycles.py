@@ -83,11 +83,11 @@ def cycle(filename,
         multiplier = 1
 
         #transform to units m/day/basin
-        if unit[-4:] == 'cell':
+        if 'cell' in unit:
             multiplier *= num_cells_domain
 
-        if unit[-6:] == 'domain':
-            multiplier /= num_cells_domain
+        if 'domain' in unit:
+            multiplier /= (num_cells_domain * cellsize_m2)
 
         if 'm3s' in unit:
             multiplier *= 60*60*24
@@ -260,4 +260,3 @@ def cycle(filename,
         fig_bar.show()
         fig_lines_type_flows.show()
         fig_lines_all_flows.show()
-    

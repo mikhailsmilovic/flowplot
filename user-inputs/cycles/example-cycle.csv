@@ -1,0 +1,5 @@
+SIMULATION;VARIABLES;UNITS;TYPE
+.\user-inputs\time-series\example-time-series.csv;Prec;m3;in
+;ETaTOT;m3;out
+;Vol;m3;storage
+;Snow;m3;Prec

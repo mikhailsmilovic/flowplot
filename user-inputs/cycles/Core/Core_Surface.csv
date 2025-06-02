@@ -1,13 +1,13 @@
 SIMULATION;VARIABLES;UNITS;TYPE;Unnamed: 4;USER GUIDE
-.\user-inputs\simulation-outputs\Core_2015_2050\subcatchments\avg_1.ts;VolSurf;m3cell;storage;;
+.\user-inputs\time-series\Core_2015_2050\subcatchments\avg_1.ts;VolSurf;m3cell;storage;;
 ;Infiltr;m3scell;out;;VARIABLES = names of variables that are column names in the SIMULATON file
 ;QSurfChan;m3scell;out;;UNITS = m3s , m3
 ;ExfiltrSoil_1;m3scell;in;;TYPE = one of: in, out, storage, or the Variable name in VARIABLES that it belongs to
 ;Prec;mmdcell;in;;
 ;ETaSurf;m3dcell;out;;
 ;ETaRain;m3dcell;out;;
-.\user-inputs\simulation-outputs\Core_2015_2050\lakes_reservoirs\1.ts;InflowOther;m3s;out;;
-.\user-inputs\simulation-outputs\Core_2015_2050\lakes_reservoirs\2.ts;InflowOther;m3s;out;;
-.\user-inputs\simulation-outputs\Core_2015_2050\lakes_reservoirs\3.ts;InflowOther;m3s;out;;
-.\user-inputs\simulation-outputs\Core_2015_2050\lakes_reservoirs\4.ts;InflowOther;m3s;out;;
-.\user-inputs\simulation-outputs\Core_2015_2050\lakes_reservoirs\8.ts;InflowOther;m3s;out;;
+.\user-inputs\time-series\Core_2015_2050\lakes_reservoirs\1.ts;InflowOther;m3s;out;;
+.\user-inputs\time-series\Core_2015_2050\lakes_reservoirs\2.ts;InflowOther;m3s;out;;
+.\user-inputs\time-series\Core_2015_2050\lakes_reservoirs\3.ts;InflowOther;m3s;out;;
+.\user-inputs\time-series\Core_2015_2050\lakes_reservoirs\4.ts;InflowOther;m3s;out;;
+.\user-inputs\time-series\Core_2015_2050\lakes_reservoirs\8.ts;InflowOther;m3s;out;;

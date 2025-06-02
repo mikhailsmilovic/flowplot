@@ -1,5 +1,5 @@
 SIMULATION;VARIABLES;UNITS;TYPE;Unnamed: 4;USER GUIDE
-.\user-inputs\simulation-outputs\Shire_Malawi_1981_2019\lakes_reservoirs\1.ts;Volume;m3;storage;;
+.\user-inputs\time-series\Shire_Malawi_1981_2019\lakes_reservoirs\1.ts;Volume;m3;storage;;
 ;Inflow;m3s;in;;SIMULATION = the name of the file with the outputs in CSV format
 ;Outflow;m3s;out;;VARIABLES = names of variables that are column names in the SIMULATON file
 ;Evaporation;m3d;out;;UNITS = m3s , m3
