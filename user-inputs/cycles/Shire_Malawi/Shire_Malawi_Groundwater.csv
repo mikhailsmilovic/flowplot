@@ -1,0 +1,5 @@
+SIMULATION;VARIABLES;UNITS;TYPE;Unnamed: 4;USER GUIDE
+.\user-inputs\simulation-outputs\Shire_Malawi_1981_2019\subcatchments\avg_1.ts;VolGw;m3cell;storage;;
+;ExfiltrGw;m3scell;out;m3s;VARIABLES = names of variables that are column names in the SIMULATON file
+;QGwChan;m3scell;out;;UNITS = m3s , m3
+;PercolSoil_2;m3scell;in;m3s;TYPE = one of: in, out, storage, or the Variable name in VARIABLES that it belongs to

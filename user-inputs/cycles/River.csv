@@ -1,9 +1,0 @@
-SIMULATION;VARIABLES;UNITS;TYPE;;USER GUIDE;;
-.\user-inputs\simulation-outputs\avg_1.ts;VolChan;m3cell;storage;;;;
-;QSurfChan;m3scell;in;;UNITS = m3s , m3;;
-;QSoilChan_1;m3scell;in;;PercolSoil1;m3s;out
-;QSoilChan_2;m3scell;in;;PercolSoil1;m3s;in
-;QGwChan;m3scell;in;;;;
-.\user-inputs\simulation-outputs\150833.ts;QChan;m3s;out;;;;
-.\user-inputs\simulation-outputs\1.ts;InflowFromRiv;m3s;out;;;;
-;Outflow;m3s;in;;;;

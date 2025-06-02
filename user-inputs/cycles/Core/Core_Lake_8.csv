@@ -1,0 +1,12 @@
+SIMULATION;VARIABLES;UNITS;TYPE;Unnamed: 4;USER GUIDE
+.\user-inputs\simulation-outputs\Core_2015_2050\lakes_reservoirs\8.ts;Volume;m3;storage;;
+;Inflow;m3s;in;;SIMULATION = the name of the file with the outputs in CSV format
+;Outflow;m3s;out;;VARIABLES = names of variables that are column names in the SIMULATON file
+;Evaporation;m3d;out;;UNITS = m3s , m3
+;Infiltration;m3s;out;;TYPE = one of: in, out, storage, or the Variable name in VARIABLES that it belongs to
+;Overflow;m3s;Outflow;;
+;InflowFromChan;m3s;Inflow;;
+;InflowOther;m3s;Inflow;;
+;Exfiltration;m3s;InflowOther;;
+;InflowLatSurf;m3s;InflowOther;;
+;LakePrecip;m3s;InflowOther;;
