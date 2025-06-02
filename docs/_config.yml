@@ -1,4 +1,8 @@
-theme: jekyll-theme-dark-minimal
+remote_theme: jekyll/minima
+plugins:
+  - jekyll-remote-theme
 title: flowplot's homepage
+minima:
+  skin: dark
 description: Willkommen! flowplot is a visualisation and analysis tool for hydrological and input-output-storage data
 markdown: GFM
