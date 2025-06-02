@@ -1,8 +1,8 @@
 ---
-title: Cycles guide
+title: Cycles
 ---
 # Cycles
-# Quick setup
+# Quickstart
 ```
 ├── flowplot
     ├── user-inputs
@@ -55,26 +55,12 @@ Stock values will be transformed into metres cubed or metres (daily average).
 | m3      | cubic metres (volume, per day)           |
 | m3s     | cubic metres per second (flow rate)      |
 | mm      | millimetres (depth per cell, per day)    |
-| --cell  | multilpies by the number of cells        |
-| --domain| divides the unit by the number of cells and (average) cell size |
-
-### Example Cycles file 
-| SIMULATION | VARIABLES | UNITS | TYPE |
-| --- | --- | --- | --- |
-| ..\Location\basin.ts | Prec | mmdcell | in |
-| | ETaTOT | m3dcell | out |
-| | Vol | m3cell | storage |
-| ..\Location\outlet.ts | QChan | m3s | out |
+| + cell  | multilpies by the number of cells (m3cell, m3scell, mmcell) |
+| + domain| divides by the number of cells and cell size (m3cell, m3scell, mmcell) |
 
 ## time-series
 Files contains three columns for the date: YYYY, MM, DD.
 Column names must include those indicated in the cycles csv VARIABLES column above. Columns hold daily values of flows, with name and unit indicated in cycle csv.
-
-### Example time-series file 
-| YYYY | MM | DD | Prec | ETaTOT | Vol | NotUsed |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2000 | 01 | 01 | 7.89E+00 | 4.74+03 | 2.43E+06 | 1.77E+11 |
-| 2000 | 01 | 01 | 6.19E+00 | 3.85E+03 | 2.43+06 | 1.77E+11 |
 
 # Usage
 
